@@ -1,60 +1,156 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
     <meta charset="UTF-8">
-    <title>Produs</title>
-    <link rel="stylesheet" href="produs.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cameră Wireless - MDL SHOP</title>
     <link rel="stylesheet" href="hon.css">
-    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
-     <div class="com">
-        <h5> Bine ai venit pe Site-ul meu </h5>
-        </div>
- 
-    <div class="linie">
-        <hr>
+
+    <div class="com">
+        <h5>Bine ai venit pe Site-ul meu</h5>
     </div>
-   
+    <hr>
+
     <header class="site-header">
-  <div class="brand">
-    <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
-    <span class="site-name">MDL SHOP</span>
-  </div>
-</header>
-<div class="navbar">
+        <div class="brand">
+            <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+            <span class="site-name">MDL SHOP</span>
+        </div>
+    </header>
+
+    <div class="navbar">
         <a href="hom.html"><i class="fa-solid fa-house"></i></a>
-        <a href="produse.html"><i class="fa-solid fa-bag-shopping"></i></a>
-        <a href="contact.html"><i class="fa-solid fa-address-book"></i></a>
-        <a href="ador"><i class="fa-solid fa-heart heart"></i></a>
-        <a href="log.html"><i class="fa-solid fa-user"></i></a>  
-         
-    </div>
-    </div>
-    <div class="search-box">
-  <input type="search" placeholder="Caută...">
-  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <a href="cos.html" id="cartIcon"><i class="fa-solid fa-bag-shopping"></i> <span id="cartCount">0</span></a>
+        <a href="favorite.html" id="favIconLink">
+            <i class="fa-solid fa-heart"></i>
+            <span id="favCount">0</span>
+        </a>
+        <a href="log.html"><i class="fa-solid fa-user"></i></a>
+        <a href="contact.html"><i class="fa-solid fa-envelope"></i></a>
     </div>
 
-<div class="product-page">
 
-    <div class="gallery">
-        <img src="img/produs1.jpg">
-        <img src="img/produs2.jpg">
-        <img src="img/produs3.jpg">
+    <div class="product-page">
+        <div class="gallery">
+            <!-- Main Image Container -->
+            <div class="main-img-container">
+                <img src="/imagine 14.jpg" class="main-img" id="mainImage" alt="Produs">
+            </div>
+
+            <!-- Thumbnails Row -->
+            <div class="thumbnails">
+                <img src="/imagine 14.jpg" class="thumb active" onclick="changeImage(this)">
+                <img src="/imagine 15.jpg" class="thumb" onclick="changeImage(this)">
+                <img src="/imagine 16.jpg" class="thumb" onclick="changeImage(this)">
+                <img src="/iphone 17.jpg" class="thumb" onclick="changeImage(this)">
+            </div>
+        </div>
+
+        <div class="details">
+            <h1 id="productName">Cameră Wireless Full HD 360°</h1>
+            <p id="productSku" style="color:#64748b; font-size:12px; margin-top:-10px;"></p>
+
+            <div class="stock-status">
+                <i class="fa-solid fa-check-circle"></i> În stoc
+            </div>
+
+            <p class="price" id="productPrice">199 RON</p>
+
+
+            <div class="delivery-info">
+                <i class="fa-solid fa-truck-fast"></i>
+                <div>
+                    <strong>Livrare Rapidă</strong><br>
+                    Ajunge la tine în 24-48 ore. Cost transport: 15 RON.
+                </div>
+            </div>
+
+            <div class="description">
+                <h3>Descriere Produs</h3>
+                <p>
+                    Asigură securitatea casei tale cu această cameră de supraveghere inteligentă.
+                    Se conectează direct la telefon prin aplicație, are vedere nocturnă (Night Vision)
+                    și senzor de mișcare.
+                </p>
+                <ul>
+                    <li>Rezoluție: 1080p Full HD</li>
+                    <li>Senzor de mișcare inteligent</li>
+                    <li>Vedere nocturnă IR</li>
+                </ul>
+            </div>
+
+            <div id="variantSelectors" style="margin: 20px 0;">
+                <!-- JS Generated Variants -->
+            </div>
+
+            <div style="background: #f9f9f9; padding:15px; border-radius:10px; margin: 20px 0; font-size:14px;">
+
+                <p style="margin:5px 0;"><i class="fa-solid fa-truck" style="color:#27ae60;"></i> Livrare
+                    Gratuită (peste 300 RON)</p>
+                <p style="margin:5px 0;"><i class="fa-solid fa-calendar-check" style="color:#27ae60;"></i>
+                    Livrare între: <b id="deliveryDate">...</b></p>
+                <p style="margin:5px 0;"><i class="fa-solid fa-shield-check" style="color:#27ae60;"></i>
+                    Garanție 24 Luni</p>
+            </div>
+
+            <div class="prod-actions">
+                <button class="add-cart" id="addToCartBtn">ADĂUGĂ ÎN COȘ</button>
+                <button class="fav-btn-prod"><i class="fa-regular fa-heart"></i></button>
+            </div>
+
+            <div id="toastContainer" style="position:fixed; top:20px; right:20px; z-index:9999;"></div>
+
+
+            <div class="reviews-section" id="reviewsSection">
+                <div class="reviews-header">
+                    <h3>Recenzii Clienți</h3>
+                    <div class="rating-summary">
+                        <div class="avg-stars" id="avgStars">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span id="avgRatingText">0.0 (0 recenzii)</span>
+                    </div>
+                </div>
+
+                <div class="review-list" id="reviewList">
+                    <!-- Dinamic loaded reviews -->
+                    <p style="color:#64748b; font-size:14px; text-align:center; padding:20px;">Fii primul care lasă o
+                        recenzie!</p>
+                </div>
+
+                <div class="add-review">
+                    <h4>Adaugă o recenzie</h4>
+                    <div class="star-rating-input" id="starInput">
+                        <i class="fa-regular fa-star" data-value="1"></i>
+                        <i class="fa-regular fa-star" data-value="2"></i>
+                        <i class="fa-regular fa-star" data-value="3"></i>
+                        <i class="fa-regular fa-star" data-value="4"></i>
+                        <i class="fa-regular fa-star" data-value="5"></i>
+                    </div>
+                    <input type="text" id="reviewName" placeholder="Numele tău"
+                        style="width:100%; padding:10px; margin:10px 0; border:1px solid #ddd; border-radius:8px;">
+                    <textarea id="reviewText" placeholder="Părerea ta despre produs..."
+                        style="width:100%; height:80px; padding:10px; border:1px solid #ddd; border-radius:8px; margin-bottom:10px;"></textarea>
+                    <button class="btn-submit-review" onclick="submitReview()">Trimite Recenzia</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="details">
-        <h1>Cameră Wireless Full HD</h1>
-        <p class="price">199 RON</p>
-        <p>
-            Cameră de supraveghere wireless cu vedere nocturnă,
-            detectare mișcare și control din aplicație.
-        </p>
-        <button class="add-cart">Adaugă în coș</button>
-    </div>
 
-</div>
+    <script src="utils.js"></script>
+    <script src="produs.js"></script>
+
 
 </body>
+
 </html>

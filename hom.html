@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ro">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MDL SHOP</title>
 
   <link rel="stylesheet" href="hon.css">
@@ -11,107 +12,136 @@
 
 <body>
 
-<div class="com">
-  <h5>Bine ai venit pe Site-ul meu</h5>
-</div>
-
-<hr>
-
-<header class="site-header">
-  <div class="brand">
-    <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
-    <span class="site-name">MDL SHOP</span>
+  <div class="com">
+    <h5>Bine ai venit pe Site-ul meu</h5>
   </div>
-</header>
 
-<div class="navbar">
-  <a href="#"><i class="fa-solid fa-house"></i></a>
-  <a href="produse.html"><i class="fa-solid fa-bag-shopping"></i></a>
-  <a href="contact.html"><i class="fa-solid fa-address-book"></i></a>
-  <a href="#"><i class="fa-solid fa-heart heart"></i></a>
-  <a href="log.html"><i class="fa-solid fa-user"></i></a>
-</div>
+  <hr>
 
-<!-- SEARCH -->
-<div class="search-box">
-  <input type="search" id="searchInput" placeholder="Caută...">
-  <button id="searchBtn" class="search-btn">
-    <i class="fa-solid fa-magnifying-glass"></i>
-  </button>
-</div>
+  <header class="site-header">
+    <div class="brand">
+      <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+      <span class="site-name">MDL SHOP</span>
+    </div>
+  </header>
 
-<!-- FILTRE -->
+  <div class="navbar">
+    <a href="#"><i class="fa-solid fa-house"></i></a>
+    <a href="cos.html" id="cartIcon"><i class="fa-solid fa-bag-shopping"></i> <span id="cartCount">0</span></a>
+    <a href="favorite.html" id="favIconLink">
+      <i class="fa-solid fa-heart heart"></i>
+      <span id="favCount">0</span>
+    </a>
+    <a href="log.html"><i class="fa-solid fa-user"></i></a>
+    <a href="contact.html"><i class="fa-solid fa-envelope"></i></a>
+  </div>
 
-<!-- PRODUSE -->
-<div class="products">
+  <!-- SEARCH -->
+  <div class="search-box">
+    <input type="search" id="searchInput" placeholder="Caută...">
+    <button id="searchBtn" class="search-btn">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </div>
 
-  <a href="produs.html" class="product-card"
-     data-name="camera wireless"
-     data-price="199"
-     data-category="telefon">
 
-    <div class="badge">OFERTA ZILEI</div>
-    <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-    <img src="/imagine 14.jpg">
-    <h2>Cameră Wireless</h2>
-    <p class="price">199 RON</p>
-    <button class="add-cart">Adaugă în coș</button>
-  </a>
+  <!-- COMPACT FILTERS (SMALLER & NEAR PRODUCTS) -->
+  <div class="filters-bar">
+    <div class="filter-group">
+      <label>Categorie:</label>
+      <select id="categoryFilter">
+        <option value="all">Toate</option>
+        <!-- Din JS -->
+      </select>
+    </div>
+    <div class="filter-group">
+      <label>Sortează:</label>
+      <select id="sortOrder">
+        <option value="default">Cele mai noi</option>
+        <option value="price-asc">Preț: Mic -> Mare</option>
+        <option value="price-desc">Preț: Mare -> Mic</option>
+      </select>
+    </div>
+  </div>
 
-  <a href="produs.html" class="product-card"
-     data-name="camera exterior"
-     data-price="249"
-     data-category="telefon">
+  <!-- PRODUSE -->
+  <div class="products" style="margin-top: 5px;">
+    <!-- Produsele vor fi generate din JS (Admin Backend) -->
+  </div>
 
-    <div class="badge">REDUCERE 50%</div>
-    <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-    <img src="/imagine 14.jpg">
-    <h2>Cameră Exterior</h2>
-    <p class="price">249 RON</p>
-    <button class="add-cart">Adaugă în coș</button>
-  </a>
+  <!-- RECOMMENDATIONS -->
+  <div id="recommendationsContainer" style="margin-top: 50px; padding: 20px; border-top: 2px solid #eee;"></div>
 
-  <a href="produs.html" class="product-card"
-     data-name="ceas smart"
-     data-price="399"
-     data-category="telefon">
+  <!-- FOOTER -->
+  <footer class="site-footer" style="background:#1a1a1a; color:#fff; padding:50px 20px; margin-top:50px;">
+    <div
+      style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:40px;">
+      <div>
+        <h3 id="footerStoreName" style="color:#00d2ff;">MDL SHOP</h3>
+        <p style="font-size:14px; opacity:0.8;">Partenerul tău de încredere pentru soluții smart și tehnologie de ultimă
+          oră.</p>
 
-    <div class="badge">OFERTA ZILEI</div>
-    <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-    <img src="/imagine 14.jpg">
-    <h2>Ceas Smart</h2>
-    <p class="price">399 RON</p>
-    <button class="add-cart">Adaugă în coș</button>
-  </a>
+        <div id="footerLegalInfo" style="margin-top: 15px; font-size: 12px; line-height: 1.6; opacity: 0.6;">
+          <!-- Dinamic din Settings -->
+          <p id="footerCompanyName">MDL SHOP SRL</p>
+          <p>CUI: <span id="footerCUI">RO12345678</span> | Reg. Com: <span id="footerReg">J40/000/2023</span></p>
+          <p id="footerAddress">București, România</p>
+        </div>
 
-  <a href="produs.html" class="product-card"
-     data-name="uscator rufe"
-     data-price="899"
-     data-category="electrocasnice">
+        <div style="display:flex; gap:15px; margin-top:20px;">
+          <i class="fa-brands fa-facebook"></i>
+          <i class="fa-brands fa-instagram"></i>
+          <i class="fa-brands fa-tiktok"></i>
+        </div>
+      </div>
 
-    <div class="badge">OFERTA ZILEI</div>
-    <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-    <img src="/imagine 14.jpg">
-    <h2>Uscător Rufe</h2>
-    <p class="price">899 RON</p>
-    <button class="add-cart">Adaugă în coș</button>
-  </a>
+      <div>
+        <h4>Informații</h4>
+        <ul style="list-style:none; padding:0; font-size:14px; opacity:0.8;">
+          <li style="margin-bottom:10px;"><a href="#" style="color:#fff; text-decoration:none;">Termeni și Condiții</a>
+          </li>
+          <li style="margin-bottom:10px;"><a href="#" style="color:#fff; text-decoration:none;">Politica GDPR</a></li>
+          <li style="margin-bottom:10px;"><a href="#" style="color:#fff; text-decoration:none;">ANPC</a></li>
+          <li style="margin-bottom:10px;"><a href="#" style="color:#fff; text-decoration:none;">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Newsletter</h4>
+        <p style="font-size:14px; opacity:0.8;">Abonează-te pentru oferte exclusive și noutăți AI.</p>
+        <div style="display:flex; margin-top:10px;">
+          <input type="email" placeholder="Email-ul tau"
+            style="padding:10px; border:none; border-radius:5px 0 0 5px; flex:1;">
+          <button
+            style="padding:10px; background:#00d2ff; border:none; border-radius:0 5px 5px 0; cursor:pointer; color:#000; font-weight:bold;">OK</button>
+        </div>
+      </div>
+    </div>
+    <div
+      style="text-align:center; padding-top:40px; margin-top:40px; border-top:1px solid #333; font-size:12px; opacity:0.5;">
+      &copy; 2026 MDL SHOP. Toate drepturile rezervate.
+    </div>
+  </footer>
 
-  <a href="produs.html" class="product-card"
-     data-name="masina spalat"
-     data-price="1599"
-     data-category="electrocasnice">
+  <!-- CART SIDEBAR -->
 
-    <div class="badge">OFERTA ZILEI</div>
-    <button class="fav-btn"><i class="fa-regular fa-heart"></i></button>
-    <img src="/imagine 14.jpg">
-    <h2>Mașină de spălat</h2>
-    <p class="price">1599 RON</p>
-    <button class="add-cart">Adaugă în coș</button>
-  </a>
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h2>Coșul meu</h2>
+      <button id="closeCartBtn"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <!-- Itemele vor fi adăugate aici prin JS -->
+      <p style="text-align:center; margin-top: 20px;">Coșul este gol.</p>
+    </div>
+    <div class="cart-footer">
+      <h3>Total: <span id="cartTotal">0</span> RON</h3>
+      <button class="checkout-btn">Finalizează Comanda</button>
+    </div>
+  </div>
 
-</div>
-
-<script src="hom.js"></script>
+  <script src="utils.js"></script>
+  <script src="hom.js"></script>
 </body>
+
 </html>

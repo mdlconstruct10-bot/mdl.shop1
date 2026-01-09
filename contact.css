@@ -1,0 +1,130 @@
+.contact-container {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-container {
+        margin: 20px 10px;
+        padding: 10px;
+        gap: 20px;
+    }
+
+    .info-card,
+    .form-card {
+        padding: 20px;
+    }
+
+    .info-card h2,
+    .form-card h2 {
+        font-size: 20px;
+    }
+}
+
+.info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    text-align: left;
+}
+
+.info-card h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    color: #333;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.info-item i {
+    font-size: 20px;
+    color: #044fff;
+    width: 30px;
+}
+
+.info-item div p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.info-item div h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-card {
+    background: #111;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.form-card h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.contact-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 10px;
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #00d2ff;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #d1d1d1;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: #0099cc;
+    transform: translateY(-2px);
+}

@@ -1,0 +1,41 @@
+/* ================== FAVORITES PAGE ================== */
+.favorites-container {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.fav-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.empty-msg {
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+    margin-top: 50px;
+}
+
+/* Ajustări pt a arăta bine containerul în pagina goală */
+.product-card {
+    margin: 0;
+    /* Override margin din home */
+}
+
+@media (max-width: 480px) {
+    .favorites-container {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    .fav-products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .favorites-container h1 {
+        font-size: 20px;
+        text-align: center;
+    }
+}

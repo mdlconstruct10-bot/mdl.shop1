@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Finalizare Comandă - MDL SHOP</title>
+    <link rel="stylesheet" href="hon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+    <div class="com">
+        <h5>Finalizează comanda ta rapid și sigur</h5>
+    </div>
+    <hr>
+
+    <header class="site-header">
+        <div class="brand">
+            <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+            <span class="site-name">MDL SHOP</span>
+        </div>
+    </header>
+
+    <div class="navbar">
+        <a href="hom.html"><i class="fa-solid fa-house"></i></a>
+        <a href="cos.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a href="favorite.html"><i class="fa-solid fa-heart"></i></a>
+        <a href="log.html"><i class="fa-solid fa-user"></i></a>
+    </div>
+
+    <div class="checkout-container">
+        <form id="checkoutForm">
+            <h1>Finalizare Comandă</h1>
+            <div class="checkout-grid">
+                <!-- Formular Date Contact -->
+                <!-- Tip Client Selector -->
+
+
+                <div class="form-group">
+
+                    <label>Tip Client</label>
+                    <div class="client-type-selector">
+                        <label class="radio-tab active">
+                            <input type="radio" name="clientType" value="pf" checked onchange="toggleClientType('pf')">
+                            Persoană Fizică
+                        </label>
+                        <label class="radio-tab">
+                            <input type="radio" name="clientType" value="pj" onchange="toggleClientType('pj')"> Persoană
+                            Juridică (Firmă)
+                        </label>
+                    </div>
+                </div>
+
+
+
+                <!-- PJ Mandatory Fields (Hidden by default) -->
+                <div id="pjFields"
+                    style="display:none; background:#f8fafc; padding:15px; border-radius:10px; border:1px solid #e2e8f0; margin-bottom:20px;">
+                    <div class="form-group">
+                        <label>Denumire Firmă</label>
+                        <input type="text" id="compName" placeholder="Ex: MDL SMART SOLUTIONS SRL">
+                    </div>
+                    <div class="form-group"
+                        style="display:grid; grid-template-columns: 1fr 1fr; gap:10px; margin-bottom:5px;">
+                        <div>
+                            <label>CUI (Cod Fiscal)</label>
+                            <input type="text" id="compCUI" placeholder="Ex: 12345678">
+                        </div>
+                        <div>
+                            <label>Nr. Reg. Comerțului (J)</label>
+                            <input type="text" id="compReg" placeholder="Ex: J40/123/2023">
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="margin-top:10px; border-top:1px solid #eef2f7; padding-top:10px;">
+                        <label
+                            style="display:flex; align-items:center; gap:8px; cursor:pointer; font-size:13px; color:#1e293b;">
+                            <input type="checkbox" id="isVatPayerPJ" style="width:auto !important;">
+                            <span>Această firmă este <b>Plătitoare de TVA</b></span>
+                        </label>
+                        <small style="color:#64748b; font-size:11px;">* Bifarea va adăuga automat prefixul "RO" pe
+                            factură.</small>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label>Nume Complet / Delegat</label>
+                    <input type="text" id="fullName" required placeholder="Ex: Ion Popescu">
+                </div>
+                <div class="form-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <div>
+                        <label>Număr Telefon</label>
+                        <input type="tel" id="phone" required placeholder="07xx xxx xxx">
+                    </div>
+                    <div>
+                        <label>Adresă Email</label>
+                        <input type="email" id="email" required placeholder="exemplu@mail.com">
+                    </div>
+                </div>
+
+                <div class="form-group" style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <div>
+                        <label>Județ</label>
+                        <input type="text" id="county" required placeholder="Ex: București">
+                    </div>
+                    <div>
+                        <label>Localitate</label>
+                        <input type="text" id="city" required placeholder="Ex: Sector 1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Adresă (Stradă, Nr, Bloc, Ap)</label>
+                    <textarea id="address" rows="3" required
+                        placeholder="Ex: Str. Exemplu nr. 5, Bl. 1, Ap. 12"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Mențiuni Comandă (Opțional)</label>
+                    <textarea id="notes" rows="2" placeholder="Cod access, interval orar, etc."></textarea>
+                </div>
+
+                <!-- Legal Checkboxes -->
+                <div class="legal-checks" style="margin-top:20px; border-top:1px solid #eee; padding-top:15px;">
+                    <label
+                        style="display:flex; align-items:flex-start; gap:10px; font-size:13px; margin-bottom:10px; cursor:pointer;">
+                        <input type="checkbox" id="termsCheck" required style="margin-top:3px;">
+                        <span>Sunt de acord cu <a href="#" style="color:#3a7bd5;">Termenii și Condițiile</a> și confirm
+                            că
+                            datele introduse sunt corecte conform ANPC.</span>
+                    </label>
+                    <label style="display:flex; align-items:flex-start; gap:10px; font-size:13px; cursor:pointer;">
+                        <input type="checkbox" id="gdprCheck" required style="margin-top:3px;">
+                        <span>Sunt de acord cu prelucrarea datelor în scopul facturării și livrării conform politicilor
+                            GDPR.</span>
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Metodă de Plată <span style="color:#ef4444;">*</span></label>
+                    <div class="payment-grid">
+                        <label class="payment-card active">
+                            <input type="radio" name="payment" value="card" checked onchange="updatePaymentUI()">
+                            <div class="card-content">
+                                <i class="fa-solid fa-credit-card"></i>
+                                <span>Card Online</span>
+                                <small>Procesare securizată</small>
+                            </div>
+                        </label>
+                        <label class="payment-card">
+                            <input type="radio" name="payment" value="ramburs" onchange="updatePaymentUI()">
+                            <div class="card-content">
+                                <i class="fa-solid fa-money-bill-wave"></i>
+                                <span>Ramburs</span>
+                                <small>Plată la curier</small>
+                            </div>
+                        </label>
+                        <label class="payment-card">
+                            <input type="radio" name="payment" value="paypal" onchange="updatePaymentUI()">
+                            <div class="card-content">
+                                <i class="fa-brands fa-paypal"></i>
+                                <span>PayPal</span>
+                                <small>Rapid și sigur</small>
+                            </div>
+                        </label>
+                        <label class="payment-card">
+                            <input type="radio" name="payment" value="apple" onchange="updatePaymentUI()">
+                            <div class="card-content">
+                                <i class="fa-brands fa-apple-pay"></i>
+                                <span>Apple Pay</span>
+                                <small>Dintr-o atingere</small>
+                            </div>
+                        </label>
+                    </div>
+
+                    <!-- Card Details Section (Interactive) -->
+                    <div id="cardDetailsSection"
+                        style="display:none; margin-top:20px; background:#f8fafc; padding:20px; border-radius:12px; border:1px solid #e2e8f0; animation: fadeIn 0.3s ease;">
+                        <h4 style="margin-top:0; font-size:15px; color:#1e293b; margin-bottom:15px;"><i
+                                class="fa-solid fa-lock" style="color:#22c55e;"></i> Detalii Card Securizate</h4>
+                        <div class="form-group">
+                            <label style="font-size:12px;">Număr Card</label>
+                            <input type="text" placeholder="0000 0000 0000 0000" maxlength="19"
+                                style="letter-spacing:2px;">
+                        </div>
+                        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                            <div class="form-group">
+                                <label style="font-size:12px;">Dată Expirare</label>
+                                <input type="text" placeholder="LL / AA" maxlength="5">
+                            </div>
+                            <div class="form-group">
+                                <label style="font-size:12px;">CVV</label>
+                                <input type="password" placeholder="***" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ramburs Info Box -->
+                    <div id="rambursInfo"
+                        style="display:none; margin-top:20px; background:#fff7ed; padding:15px; border-radius:12px; border:1px solid #ffedd5; color:#9a3412; font-size:14px; animation: slideDown 0.3s ease;">
+                        <i class="fa-solid fa-circle-info"></i> Vei achita suma de <b id="rambursTotalDisplay">0</b> RON
+                        în numerar/card la curier în momentul livrării.
+                    </div>
+                </div>
+
+
+
+                <div style="background: #eefbff; padding:15px; border-radius:10px; margin-top:15px;">
+                    <p style="margin:0; font-size:14px; color:#005c70;">
+                        <i class="fa-solid fa-truck-fast"></i> <b>Estimare Livrare:</b>
+                        <span id="deliveryEstimate">Se calculează...</span>
+                    </p>
+                </div>
+            </div>
+    </div>
+
+
+
+    <!-- Sumar Comandă -->
+    <div class="order-summary">
+        <h3><i class="fa-solid fa-receipt"></i> Sumar Comandă</h3>
+        <div id="summaryItems">
+            <!-- Din JS -->
+        </div>
+
+        <div class="coupon-box" style="margin: 20px 0; display: flex; gap: 10px;">
+            <input type="text" id="couponCode" placeholder="Cod Cupon"
+                style="flex:1; padding: 12px; border-radius: 10px; border: 1px solid #e2e8f0; font-size: 14px;">
+            <button onclick="applyCoupon()"
+                style="padding: 12px 20px; background: #1e293b; color: #fff; border: none; border-radius: 10px; cursor: pointer; font-weight: 600;">Aplică</button>
+        </div>
+
+        <div class="summary-item total">
+            <span>Total de plată:</span>
+            <span><span id="summaryTotal">0</span> RON</span>
+        </div>
+        <button type="submit" class="place-order-btn">Trimite Comanda <i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+
+    </form>
+    </div>
+
+    </div>
+
+    <!-- Apple Pay Simulation Modal -->
+    <div id="applePayModal"
+        style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:9999; align-items:flex-end; justify-content:center;">
+        <div
+            style="background:#fff; width:100%; max-width:450px; border-radius:20px 20px 0 0; padding:30px; animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1); box-shadow:0 -10px 40px rgba(0,0,0,0.5);">
+            <div style="text-align:center; margin-bottom:25px;">
+                <i class="fa-brands fa-apple-pay" style="font-size:50px; color:#000;"></i>
+                <h2 style="margin:10px 0 5px 0;">Apple Pay</h2>
+                <p style="color:#64748b; font-size:14px;">Confirmă plata tranzacției</p>
+            </div>
+            <div style="border-top:1px solid #eee; border-bottom:1px solid #eee; padding:15px 0; margin-bottom:20px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span style="color:#64748b;">Card</span>
+                    <span style="font-weight:bold;">•••• 8821</span>
+                </div>
+                <div style="display:flex; justify-content:space-between;">
+                    <span style="color:#64748b;">Total de plată</span>
+                    <span style="font-weight:bold; font-size:18px;" id="applePayTotal">0 RON</span>
+                </div>
+            </div>
+            <button onclick="confirmApplePay()"
+                style="width:100%; background:#000; color:#fff; border:none; padding:15px; border-radius:12px; font-size:16px; font-weight:bold; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;">
+                <i class="fa-solid fa-face-smile"></i> Confirmă cu FaceID
+            </button>
+            <button onclick="closeApplePay()"
+                style="width:100%; background:none; border:none; padding:15px; color:#ef4444; font-weight:bold; cursor:pointer; margin-top:10px;">Anulează</button>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="checkout.js"></script>
+
+
+</body>
+
+</html>

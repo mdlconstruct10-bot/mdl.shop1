@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coș de Cumpărături - MDL SHOP</title>
+    <link rel="stylesheet" href="hon.css">
+    <link rel="stylesheet" href="cos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="com">
+        <h5>Bine ai venit pe Site-ul meu</h5>
+    </div>
+    <hr>
+
+    <header class="site-header">
+        <div class="brand">
+            <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+            <span class="site-name">MDL SHOP</span>
+        </div>
+    </header>
+    <div class="navbar">
+        <a href="hom.html"><i class="fa-solid fa-house"></i></a>
+        <a href="cos.html" id="cartIcon"><i class="fa-solid fa-bag-shopping"></i> <span id="cartCount">0</span></a>
+        <a href="favorite.html" id="favIconLink">
+            <i class="fa-solid fa-heart" id="favIconInNav"></i>
+            <span id="favCount">0</span>
+        </a>
+        <a href="log.html"><i class="fa-solid fa-user"></i></a>
+        <a href="contact.html"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+
+    <div class="cart-page-header">
+        <h1>Coșul tău</h1>
+        <p style="color: #64748b;">Ai <span id="cartCountTitle">0 produse</span> în coș.</p>
+    </div>
+
+    <div class="cart-main-layout">
+        <!-- LEFT: ITEMS -->
+        <div class="cart-left-col">
+            <!-- Free Shipping Info -->
+            <div class="free-shipping-banner">
+                <div class="shipping-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                <div style="flex:1;">
+                    <div id="shippingProgressInfo" style="font-size:14px; font-weight:600; margin-bottom:5px;">
+                        Mai ai nevoie de 300 RON pentru livrare gratuită!
+                    </div>
+                    <div class="shipping-bar-wrapper">
+                        <div class="shipping-bar-inner" id="progressBar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-items-glass" id="cartItemsList">
+                <!-- JS Generated Cards -->
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- RIGHT: SUMMARY -->
+    <div class="cart-right-col">
+        <div class="cart-summary-sticky">
+            <div class="summary-title">Sumar Comandă</div>
+
+            <div class="summary-title"><i class="fa-solid fa-list-check"></i> Sumar Comandă</div>
+
+            <div class="summary-row">
+                <span><i class="fa-solid fa-box"></i> Subtotal</span>
+                <span><span id="subtotalVal">0</span> RON</span>
+            </div>
+            <div class="summary-row">
+                <span><i class="fa-solid fa-truck"></i> Transport</span>
+                <span id="shippingVal">19 RON</span>
+            </div>
+            <div class="summary-row">
+                <span><i class="fa-solid fa-tag"></i> Discount</span>
+                <span style="color:#2ecc71;">-0 RON</span>
+            </div>
+
+            <div class="summary-row grand-total">
+                <span>Total</span>
+                <span><span id="cartGrandTotal">0</span> RON</span>
+            </div>
+
+            <p style="font-size:11px; color:#94a3b8; margin-top:15px; line-height:1.4;">
+                Prețul include TVA. Prin finalizarea comenzii sunteți de acord cu termenii noștri.
+            </p>
+
+            <button class="checkout-btn-pro" onclick="window.location.href='checkout.html'">
+                Finalizează Plata <i class="fa-solid fa-arrow-right-long"></i>
+            </button>
+
+            <div style="margin-top:20px; display:flex; justify-content:center; gap:12px; font-size:20px; opacity:0.2;">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-apple-pay"></i>
+                <i class="fa-brands fa-google-pay"></i>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+
+
+    <script src="utils.js"></script>
+    <script src="cos.js"></script>
+
+</body>
+
+</html>

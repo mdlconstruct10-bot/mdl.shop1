@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Favorite - MDL SHOP</title>
+    <link rel="stylesheet" href="hon.css">
+    <link rel="stylesheet" href="favorite.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="com">
+        <h5>Bine ai venit pe Site-ul meu</h5>
+    </div>
+    <hr>
+
+    <header class="site-header">
+        <div class="brand">
+            <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+            <span class="site-name">MDL SHOP</span>
+        </div>
+    </header>
+    <div class="navbar">
+        <a href="hom.html"><i class="fa-solid fa-house"></i></a>
+        <a href="cos.html" id="cartIcon"><i class="fa-solid fa-bag-shopping"></i> <span id="cartCount">0</span></a>
+
+        <a href="favorite.html" class="active">
+            <i class="fa-solid fa-heart"></i>
+            <span id="favCount">0</span>
+        </a>
+        <a href="log.html"><i class="fa-solid fa-user"></i></a>
+        <a href="contact.html"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+
+    <div class="favorites-container">
+        <h1>Produsele tale Favorite ❤️</h1>
+        <div id="favList" class="fav-products">
+            <!-- JS rendered -->
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="favorite.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Contact - MDL SHOP</title>
+    <link rel="stylesheet" href="hon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="contact.css">
+</head>
+
+<body>
+
+    <div class="com">
+        <h5>Contactează-ne pentru orice întrebare sau propunere de colaborare</h5>
+    </div>
+    <hr>
+
+    <header class="site-header">
+        <div class="brand">
+            <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+            <span class="site-name">MDL SHOP</span>
+        </div>
+    </header>
+
+    <div class="navbar">
+        <a href="hom.html"><i class="fa-solid fa-house"></i></a>
+        <a href="cos.html"><i class="fa-solid fa-bag-shopping"></i></a>
+        <a href="favorite.html"><i class="fa-solid fa-heart"></i></a>
+        <a href="log.html"><i class="fa-solid fa-user"></i></a>
+        <a href="contact.html" class="active"><i class="fa-solid fa-envelope"></i></a>
+    </div>
+
+    <div class="contact-container">
+        <!-- Secțiunea Informații Firmă -->
+        <div class="info-card">
+            <h2>Informații Companie</h2>
+
+            <div class="info-item">
+                <i class="fa-solid fa-building"></i>
+                <div>
+                    <p>Nume Firmă</p>
+                    <h4>MDL SHOP SRL</h4>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-user-tie"></i>
+                <div>
+                    <p>Director General</p>
+                    <h4>Lorenzo MDL</h4>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-phone-volume"></i>
+                <div>
+                    <p>Nr. Mobil</p>
+                    <h4>+40 722 000 111</h4>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-envelope-open-text"></i>
+                <div>
+                    <p>E-mail Oficial</p>
+                    <h4>contact@mdl-shop.ro</h4>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                    <p>Adresă Sediu</p>
+                    <h4>București, Sector 1, Str. Viitorului Nr. 15</h4>
+                </div>
+            </div>
+
+            <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                <p style="font-size: 13px; color: #999; line-height: 1.6;">
+                    Suntem dedicați calității și satisfacției clienților noștri.
+                    Pentru orice detalii legate de comenzi, parteneriate sau suport tehnic,
+                    echipa noastră vă stă la dispoziție de Luni până Vineri între orele 09:00 - 18:00.
+                </p>
+            </div>
+        </div>
+
+        <!-- Secțiunea Formular Propuneri -->
+        <div class="form-card">
+            <h2>Trimite o Propunere</h2>
+            <p style="font-size: 14px; opacity: 0.8; margin-bottom: 25px;">
+                Ai o idee de colaborare sau o sugestie pentru magazinul nostru? Scrie-ne mai jos!
+            </p>
+
+            <form class="contact-form" id="proposalForm">
+                <div class="form-group">
+                    <label>Numele tău</label>
+                    <input type="text" id="senderName" required placeholder="Ion Ionescu">
+                </div>
+
+                <div class="form-group">
+                    <label>E-mail de contact</label>
+                    <input type="email" id="senderEmail" required placeholder="exemplu@mail.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Subiect</label>
+                    <input type="text" id="subject" required placeholder="Ex: Propunere parteneriat">
+                </div>
+
+                <div class="form-group">
+                    <label>Mesajul tău / Propunerea</label>
+                    <textarea id="message" rows="5" required
+                        placeholder="Scrie aici cât mai multe detalii..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn text-white">Trimite Mesajul</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="contact.js"></script>
+
+</body>
+
+</html>

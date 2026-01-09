@@ -1,88 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="hon.css">
-    <link rel="stylesheet" href="log.css">
-<link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Document</title>
+  <link rel="stylesheet" href="hon.css">
+  <link rel="stylesheet" href="log.css">
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
+
 <body>
-   
-        <div class="com">
-        <h5> Reducere la produsele Home cu 50% </h5>
+
+  <div class="com">
+    <h5> Reducere la produsele Home cu 50% </h5>
+  </div>
+
+  <div class="linie">
+    <hr>
+  </div>
+
+  <header class="site-header">
+    <div class="brand">
+      <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+      <span class="site-name">MDL SHOP</span>
+    </div>
+  </header>
+  <div class="navbar">
+    <a href="hom.html"><i class="fa-solid fa-house"></i></a>
+    <a href="produse.html"><i class="fa-solid fa-bag-shopping"></i></a>
+
+    <a href="favorite.html" id="favIconLink">
+      <i class="fa-solid fa-heart heart"></i>
+      <span id="favCount"
+        style="background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; vertical-align: top; display: none;">0</span>
+    </a>
+    <a href="log.html" class="active"><i class="fa-solid fa-user"></i></a>
+    <a href="contact.html"><i class="fa-solid fa-envelope"></i></a>
+  </div>
+
+  <div class="container">
+
+    <!-- LOGIN -->
+    <div class="container-2 auth-card" id="loginBox">
+      <div class="log">
+        <h2>Autentificare MDL</h2>
+
+        <form>
+          <label>Utilizator</label>
+          <input type="text" required>
+
+          <label>Parolă</label>
+          <input type="password" required>
+
+          <button type="submit">Loghează-te</button>
+        </form>
+
+        <p class="switch">
+          Nu ai cont?
+          <button type="button" onclick="showRegister()">Inregistrează-te</button>
+        </p>
+
+        <!-- SOCIAL LOGIN -->
+        <div class="social-login-container">
+          <div class="separator"><span>SAU</span></div>
+          <button type="button" class="btn-google" onclick="loginWithGoogle()">
+            <i class="fa-brands fa-google"></i> Loghează-te cu Google
+          </button>
+          <button type="button" class="btn-facebook" onclick="loginWithFacebook()">
+            <i class="fa-brands fa-facebook"></i> Loghează-te cu Facebook
+          </button>
         </div>
- 
-    <div class="linie">
-        <hr>
+
+      </div>
     </div>
-       
-    <header class="site-header">
-  <div class="brand">
-    <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
-    <span class="site-name">MDL SHOP</span>
+
+    <!-- REGISTER -->
+    <div class="container-2 auth-card hidden" id="registerBox">
+      <div class="log">
+        <h2>Creaza-ti un cont MDL</h2>
+
+        <form>
+          <label>Email</label>
+          <input type="text" required>
+
+          <label>Utilizator</label>
+          <input type="text" required>
+
+          <label>Parolă</label>
+          <input type="password" required>
+
+          <button type="submit">Creează cont</button>
+        </form>
+
+        <p class="switch">
+          Ai deja cont?
+          <button type="button" onclick="showLogin()">Autentifică-te</button>
+        </p>
+      </div>
+    </div>
+
+
+    <!-- DASHBOARD (Visible when logged in) -->
+    <div class="container-2 auth-card hidden" id="dashboardBox">
+      <div class="log">
+        <h2>Contul Meu</h2>
+        <div class="user-info user-info-dash">
+          <h3 id="dashUsername">Salut, User!</h3>
+          <p class="client-id-label">Client ID: <span id="dashClientId" class="client-id-value">-</span></p>
+        </div>
+
+        <div class="orders-section">
+          <h4 class="orders-subsection-title">Comenzi în desfășurare</h4>
+          <div id="activeOrders" class="orders-list-dash">
+            <!-- Mock Content -->
+            <p>Nu ai comenzi active.</p>
+          </div>
+
+          <h4 class="orders-subsection-title">Comenzi anterioare</h4>
+          <div id="pastOrders" class="orders-list-dash">
+            <!-- Mock Content -->
+            <p>Nu ai istoric de comenzi.</p>
+          </div>
+        </div>
+
+        <button class="btn-logout" onclick="logout()">Deconectare</button>
+      </div>
+    </div>
+
   </div>
-</header>
-    <div class="navbar">
-        <a href="hom.html"><i class="fa-solid fa-house"></i></a>
-        <a href="produse.html"><i class="fa-solid fa-bag-shopping"></i></a>
-        <a href="contact.html"><i class="fa-solid fa-address-book"></i></a>
-         <a href="#"><i class="fa-solid fa-heart heart"></i></a>
-        <a href="log.html"><i class="fa-solid fa-user"></i></a>  
-    </div>
-   
-<div class="container">
-
-  <!-- LOGIN -->
-  <div class="container-2 auth-card" id="loginBox">
-    <div class="log">
-      <h2>Autentificare MDL</h2>
-
-      <form>
-        <label>Utilizator</label>
-        <input type="text" required>
-
-        <label>Parolă</label>
-        <input type="password" required>
-
-        <button type="submit">Loghează-te</button>
-      </form>
-
-      <p class="switch">
-        Nu ai cont?
-        <button type="button" onclick="showRegister()">Inregistrează-te</button>
-      </p>
-    </div>
-  </div>
-   
-  <!-- REGISTER -->
-  <div class="container-2 auth-card hidden" id="registerBox">
-    <div class="log">
-      <h2>Creaza-ti un cont MDL</h2>
-
-      <form>
-        <label>Email</label>
-        <input type="text" required>
-
-        <label>Utilizator</label>
-        <input type="text" required>
-
-        <label>Parolă</label>
-        <input type="password" required>
-
-        <button type="submit">Creează cont</button>
-      </form>
-
-      <p class="switch">
-        Ai deja cont?
-        <button type="button" onclick="showLogin()">Autentifică-te</button>
-      </p>
-    </div>
-  </div>
-
-</div>
-<script src="log.js"></script>
+  <script src="utils.js"></script>
+  <script src="log.js"></script>
 </body>
+
 </html>

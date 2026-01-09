@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Comandă Plasată - MDL SHOP</title>
+    <link rel="stylesheet" href="hon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="thanks.css">
+</head>
+
+<body>
+
+    <div class="com">
+        <h5>Comanda ta a fost înregistrată cu succes!</h5>
+    </div>
+    <hr>
+
+    <header class="site-header">
+        <div class="brand">
+            <img src="/Photoroom_20251229_000535.PNG" alt="Logo" class="logo">
+            <span class="site-name">MDL SHOP</span>
+        </div>
+    </header>
+
+    <div class="thanks-container">
+        <div class="thanks-card">
+            <div class="success-icon">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h1>Mulțumim pentru comandă!</h1>
+            <p class="subtitle">Comanda ta a fost plasată cu succes și este în curs de procesare.</p>
+
+            <div class="order-info-box">
+                <p>Număr Comandă:</p>
+                <h2 id="orderNumberDisplay">#--------</h2>
+            </div>
+
+            <div class="steps-box">
+                <div class="step">
+                    <i class="fa-solid fa-phone"></i>
+                    <p>Vei fi contactat telefonic în scurt timp pentru confirmare.</p>
+                </div>
+                <div class="step">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <p>Produsele vor fi expediate prin curier rapid în 24-48h.</p>
+                </div>
+            </div>
+
+            <div class="thanks-actions">
+                <a href="hom.html" class="btn-home">Înapoi la Magazin</a>
+                <a href="log.html" class="btn-orders">Vezi Comenzile Mele</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const orderId = urlParams.get('orderId');
+            if (orderId) {
+                document.getElementById("orderNumberDisplay").innerText = "#" + orderId;
+            }
+        });
+    </script>
+</body>
+
+</html>

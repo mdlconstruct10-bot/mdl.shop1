@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MDL Smart Admin</title>
+    <link rel="stylesheet" href="hon.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js for Analytics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <!-- LOGIN SCREEN -->
+    <div id="adminLogin">
+        <div class="login-box">
+            <h2>MDL Smart Admin</h2>
+            <p style="color:#777; margin-bottom:20px;">Enterprise eCommerce System</p>
+            <input type="password" id="adminPass" placeholder="Parola de admin">
+            <button class="add-btn" onclick="checkAdmin()">Acces Securizat</button>
+            <p id="loginError" style="color:red; display:none; margin-top:10px;">Acces Interzis!</p>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div class="dashboard" id="mainDashboard" style="display:none;">
+        <div class="sidebar">
+            <h2 style="font-size: 20px;"><i class="fa-solid fa-brain" style="color:#00d2ff;"></i> MDL AI Core</h2>
+
+            <div class="menu-item active" onclick="switchTab('dashboard')">
+                <i class="fa-solid fa-chart-line"></i> Dashboard
+            </div>
+            <div class="menu-item" onclick="switchTab('products')">
+                <i class="fa-solid fa-box-open"></i> Produse & Stoc
+            </div>
+            <div class="menu-item" onclick="switchTab('orders')">
+                <i class="fa-solid fa-truck-fast"></i> Comenzi & AWB
+            </div>
+            <div class="menu-item" onclick="switchTab('categories')">
+                <i class="fa-solid fa-tags"></i> Categorii
+            </div>
+            <div class="menu-item" onclick="switchTab('logistics')">
+                <i class="fa-solid fa-warehouse"></i> Inventar & Logistică
+            </div>
+            <div class="menu-item" onclick="switchTab('marketing')">
+                <i class="fa-solid fa-bullhorn"></i> Marketing & AI
+            </div>
+            <div class="menu-item" onclick="switchTab('growth')">
+                <i class="fa-solid fa-up-long"></i> Growth & Analytics
+            </div>
+            <div class="menu-item" onclick="switchTab('security')">
+                <i class="fa-solid fa-shield-halved"></i> Siguranță & Roluri
+            </div>
+            <div class="menu-item" onclick="switchTab('settings')">
+                <i class="fa-solid fa-gears"></i> Setări
+            </div>
+            <div class="menu-item" onclick="switchTab('reviews')">
+                <i class="fa-solid fa-star"></i> Recenzii
+            </div>
+
+
+            <div style="margin-top:auto; padding-top:20px; border-top:1px solid #555;">
+                <div class="menu-item" onclick="logout()">
+                    <i class="fa-solid fa-power-off"></i> Logout
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+
+            <!-- 1. DASHBOARD PANEL -->
+            <div id="dashboardPanel" class="panel active">
+                <h1>Bună ziua, lorenzo.mdl ! </h1>
+                <p class="subtitle">Iată raportul tău în timp real.</p>
+
+                <!-- KPI CARDS -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <h3>Vânzări Astăzi</h3>
+                        <p class="value" id="kpiSalesToday">0 RON</p>
+                        <span class="trend up" id="trendSalesToday">▲ 0%</span>
+                    </div>
+                    <div class="kpi-card">
+                        <h3>Comenzi Noi</h3>
+                        <p class="value" id="kpiNewOrders">0</p>
+                        <span class="trend up" id="trendOrders">▲ 0</span>
+                    </div>
+                    <div class="kpi-card">
+                        <h3>Vizitatori Online</h3>
+                        <p class="value" id="kpiVisitors">1</p>
+                        <span class="trend down">▼ 0%</span>
+                    </div>
+                    <div class="kpi-card">
+                        <h3>Conversie</h3>
+                        <p class="value" id="kpiConversion">0%</p>
+                        <span class="trend up">▲ 0%</span>
+                    </div>
+                    <div class="marketing-card">
+                        <h3><i class="fa-solid fa-envelope"></i> Newsletter Automat</h3>
+                        <p>Trimite email-uri pentru coșuri abandonate.</p>
+                        <button class="add-btn"
+                            onclick="showToast('Campanie Email Pornita! 582 emailuri trimise.', 'info')">Pornește
+                            Campania</button>
+
+                    </div>
+                    <div class="marketing-card">
+                        <h3><i class="fa-solid fa-ticket"></i> Cupoane & Vouchere</h3>
+                        <p>Generează coduri de reducere pentru clienți.</p>
+                        <button class="add-btn" style="background:#f1c40f; color:black;"
+                            onclick="createCoupon()">Generează Cupon</button>
+                    </div>
+                    <div class="marketing-card">
+                        <h3><i class="fa-solid fa-robot"></i> Smart Pricing AI</h3>
+                        <p>Ajustează prețurile automat pentru profit maxim.</p>
+                        <button class="add-btn" style="background:#00d2ff; color:black;"
+                            onclick="showToast('Smart Pricing AI activat!', 'info')">Activează AI</button>
+
+                    </div>
+                </div>
+
+                <!-- CHARTS ROW -->
+                <div class="charts-row">
+                    <div class="chart-container" style="flex:2;">
+                        <h3>Evoluție Vânzări (Săptămâna Asta)</h3>
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                    <div class="chart-container" style="flex:1;">
+                        <h3>Top Categorii</h3>
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. PRODUCTS PANEL -->
+            <div id="productsPanel" class="panel">
+                <h1 style="margin-bottom: 20px;">Gestionare Produse</h1>
+
+                <div style="background:white; padding:20px; border-radius:10px; margin-bottom:30px;">
+                    <h3>Adaugă Produs Nou</h3>
+
+                    <div class="form-group">
+                        <label>Nume Produs</label>
+                        <input type="text" id="pName">
+                    </div>
+
+                    <div style="display: flex; gap: 20px;">
+                        <div class="form-group" style="flex:1;">
+                            <label>Preț (RON)</label>
+                            <input type="number" id="pPrice">
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label>Stoc (Buc)</label>
+                            <input type="number" id="pStock" placeholder="100">
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label>Etichetă (ex: -50%, NOU)</label>
+                            <input type="text" id="pBadge" placeholder="ex: NOU">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Categorie</label>
+                        <select id="pCat">
+                            <option value="telefon">Telefon/Gadget</option>
+                            <option value="electrocasnice">Electrocasnice</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Descriere Produs</label>
+                        <textarea id="pDesc" rows="4"
+                            style="width:100%; padding:10px; border:1px solid #ddd; border-radius:5px;"
+                            placeholder="Detalii tehnice, descriere lungă..."></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: 20px;">
+                        <div class="form-group" style="flex:1;">
+                            <label>Culori (separate prin virgulă)</label>
+                            <input type="text" id="pColors" placeholder="Alb, Negru, Roșu">
+                        </div>
+                        <div class="form-group" style="flex:1;">
+                            <label>Mărimi / Ediții</label>
+                            <input type="text" id="pSizes" placeholder="S, M, L sau V1, V2">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Link Video (YouTube/Direct)</label>
+                        <input type="text" id="pVideo" placeholder="https://youtube.com/...">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Imagine Produs</label>
+                        <!-- DRAG & DROP ZONE -->
+                        <div id="dropZone"
+                            style="border: 2px dashed #999; padding: 20px; text-align: center; cursor: pointer; background: #fafafa;">
+                            <i class="fa-solid fa-cloud-upload-alt" style="font-size: 24px; color: #555;"></i>
+                            <p style="margin: 10px 0;">Trage o poză aici sau click pentru URL</p>
+                            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                            <img id="previewImg" style="max-height: 100px; display: none; margin: 10px auto;">
+                        </div>
+                        <!-- Fallback URL -->
+                        <input type="text" id="pImg" placeholder="Sau lipește URL direct..." style="margin-top: 10px;">
+                    </div>
+
+                    <button class="add-btn" onclick="addProduct()">Adaugă Produs</button>
+                    <button class="add-btn" onclick="clearForm()"
+                        style="background: #666; margin-left:10px;">Resetează</button>
+                    <button class="add-btn" onclick="exportProductsToCSV()"
+                        style="background: #27ae60; margin-left:10px;"><i class="fa-solid fa-file-csv"></i> Export
+                        CSV</button>
+                </div>
+
+                <h3>Listă Produse Existente</h3>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Imagine</th>
+                            <th>Nume / SKU</th>
+                            <th>Preț</th>
+                            <th>Stoc</th>
+                            <th>Acțiuni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsTable">
+                        <!-- JS generated -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3. ORDERS PANEL -->
+            <div id="ordersPanel" class="panel">
+                <h1>Comenzi & Facturi</h1>
+                <p>Generează facturi pentru comenzile primite.</p>
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>ID Comandă</th>
+                            <th>Client</th>
+                            <th>Detalii</th>
+                            <th>Total</th>
+                            <th>Acțiuni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ordersTable">
+                        <!-- JS generated -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 3.5 CATEGORIES PANEL -->
+            <div id="categoriesPanel" class="panel">
+                <h1>Gestiune Categorii</h1>
+                <p>Adaugă sau șterge categoriile de produse din magazin.</p>
+
+                <div class="cat-management-header">
+                    <div class="form-group" style="margin-bottom:0; flex:1;">
+                        <label>Nume Categorie Nouă</label>
+                        <input type="text" id="newCatName" placeholder="Ex: Gaming, Accesorii PC...">
+                    </div>
+                    <button class="add-btn" onclick="addCategory()" style="margin-bottom:2px;">Adaugă Categorie</button>
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Nume Categorie</th>
+                            <th>Status</th>
+                            <th>Acțiuni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="categoriesTable">
+                        <!-- JS generated -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 6. LOGISTICS PANEL -->
+            <div id="logisticsPanel" class="panel">
+                <h1>Gestiune Inventar & Logistică</h1>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <h3>Total Depozite</h3>
+                        <p class="value">3</p>
+                    </div>
+                    <div class="kpi-card" style="border-left: 5px solid red;">
+                        <h3>Alerte Stoc Scăzut</h3>
+                        <p class="value" style="color:red;" id="lowStockCount">0</p>
+                    </div>
+                </div>
+
+                <div style="background:white; padding:20px; border-radius:10px; margin-top:20px;">
+                    <h3>Stoc pe Depozite</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Produs</th>
+                                <th>Depozit Central</th>
+                                <th>Depozit Vest</th>
+                                <th>Retururi (Incubator)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventoryTable">
+                            <!-- JS Generated -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="background:white; padding:20px; border-radius:10px; margin-top:20px;">
+                    <h3>Sincronizare Curieri (API Status)</h3>
+                    <div style="display:flex; gap:10px;">
+                        <div style="flex:1; padding:15px; border:1px solid #eee; border-radius:10px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Fan_Courier_logo.svg"
+                                height="30">
+                            <p>Status: <span style="color:green; font-weight:bold;">CONECTAT</span></p>
+                        </div>
+                        <div style="flex:1; padding:15px; border:1px solid #eee; border-radius:10px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/ro/c/cf/Sameday_logo.png" height="30">
+                            <p>Status: <span style="color:green; font-weight:bold;">CONECTAT</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. GROWTH & ANALYTICS PANEL -->
+            <div id="growthPanel" class="panel">
+                <h1>Growth & Analytics 🚀</h1>
+                <div class="charts-row">
+                    <div class="chart-container" style="flex:1;">
+                        <h3>Analiză RFM (Clienți)</h3>
+                        <canvas id="rfmChart"></canvas>
+                    </div>
+                    <div class="chart-container" style="flex:1;">
+                        <h3>Predicție Vânzări AI</h3>
+                        <canvas id="predictionChart"></canvas>
+                    </div>
+                </div>
+                <div style="background:white; padding:20px; border-radius:10px; margin-top:20px;">
+                    <h3>Top Clienți (LTV)</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Comenzi</th>
+                                <th>Total Cheltuit</th>
+                                <th>Scor Fidelitate</th>
+                            </tr>
+                        </thead>
+                        <tbody id="topClientsTable"></tbody>
+                    </table>
+                </div>
+                <div style="background:white; padding:20px; border-radius:10px; margin-top:20px;">
+                    <h3><i class="fa-solid fa-ghost"></i> Coșuri Abandonate (Live)</h3>
+                    <p style="font-size:14px; color:#666;">Clienți care au produse în coș dar nu au finalizat comanda.
+                    </p>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th>Produse</th>
+                                <th>Total Coș</th>
+                                <th>Ultima Activitate</th>
+                                <th>Acțiuni</th>
+                            </tr>
+                        </thead>
+                        <tbody id="abandonedCartsTable"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- 8. SECURITY PANEL -->
+            <div id="securityPanel" class="panel">
+                <h1>Securitate & Log Activitate</h1>
+                <div style="background:white; padding:20px; border-radius:10px;">
+                    <h3>Utilizatori cu acces Admin</h3>
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Username</th>
+                                <th>Rol</th>
+                                <th>Ultima Activitate</th>
+                                <th>Acțiuni</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>lorenzo.mdl</td>
+                                <td>Super Admin</td>
+                                <td>Acum</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>operator_1</td>
+                                <td>Operator Comenzi</td>
+                                <td>Acum 2 ore</td>
+                                <td><button class="action-btn">Revocă</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="background:#000; color:#0f0; padding:20px; border-radius:10px; margin-top:20px; font-family:monospace; height:200px; overflow-y:auto;"
+                    id="activityLog">
+                    <p>> [INFO] lorenzo.mdl s-a logat la ora 19:35</p>
+                    <p>> [INFO] Factura #1005 a fost generată automat</p>
+                    <p>> [WARN] Stoc scăzut detectat la SKU MDL-1002</p>
+                </div>
+            </div>
+
+            <!-- 5. SETTINGS PANEL -->
+            <div id="settingsPanel" class="panel">
+                <h1>Setări Magazin</h1>
+
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px;">
+                    <!-- General Settings -->
+                    <div class="settings-container">
+                        <h3>Setări Generale</h3>
+                        <div class="form-group">
+                            <label>Nume Magazin</label>
+                            <input type="text" id="settingStoreName" value="MDL SHOP">
+                        </div>
+                        <div class="form-group">
+                            <label>Monedă Principală</label>
+                            <select id="settingCurrency">
+                                <option>RON</option>
+                                <option>EUR</option>
+                                <option>USD</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Prag Transport Gratuit (RON)</label>
+                            <input type="number" id="settingFreeShipping" value="300">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Integrări (API Keys)</label>
+                            <input type="password" placeholder="eMAG Marketplace API Key">
+                            <input type="password" placeholder="Stripe Secret Key" style="margin-top:10px;">
+                        </div>
+                    </div>
+
+                    <!-- ANAF / Firma Details -->
+                    <div class="settings-container">
+                        <h3><i class="fa-solid fa-file-invoice"></i> Detalii Firmă (ANAF / e-Factura)</h3>
+                        <p style="font-size:12px; color:#666; margin-bottom:15px;">Datele folosite pentru generarea
+                            automată a facturilor.</p>
+
+                        <div class="form-group">
+                            <label>Nume Firmă / Entitate</label>
+                            <input type="text" id="companyName" value="MDL ISTEN PRO CONSTRUCT SRL-D"
+                                placeholder="Ex: MDL SMART SOLUTIONS SRL">
+                        </div>
+                        <div class="form-group">
+                            <label>Cod Unic de Înregistrare (CUI)</label>
+                            <input type="text" id="companyCUI" value="52233149" placeholder="Ex: RO12345678">
+                        </div>
+                        <div class="form-group" style="display:flex; gap:10px;">
+                            <div style="flex:1;">
+                                <label>Nr. Reg. Comerțului (J)</label>
+                                <input type="text" id="companyReg" value="J2025056335005"
+                                    placeholder="Ex: J40/123/2023">
+                            </div>
+                            <div style="flex:1;">
+                                <label>Județ</label>
+                                <input type="text" id="companyCounty" value="Dambovita" placeholder="Ex: București">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Adresa Sediu Social</label>
+                            <input type="text" id="companyAddress"
+                                value="Sat Grozavesti, Str. Valea Neajlovului 21, Cod 137137"
+                                placeholder="Strada, Numar, Localitate">
+                        </div>
+                        <div class="form-group">
+                            <label>IBAN (Cont Bancar)</label>
+                            <input type="text" id="companyIBAN" placeholder="RO00 BNRB 1234 ...">
+                        </div>
+                        <div class="form-group">
+                            <label>Banca</label>
+                            <input type="text" id="companyBank" placeholder="Banca Transilvania, ING, etc.">
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top:30px; border-top:1px solid #eee; padding-top:20px;">
+                    <button class="add-btn" onclick="saveAdminSettings()">Salvează Toate Modificările</button>
+                    <span id="saveStatus" style="margin-left:15px; color:green; display:none;"><i
+                            class="fa-solid fa-circle-check"></i> Setări salvate cu succes!</span>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- 10. REVIEWS PANEL -->
+        <div id="reviewsPanel" class="panel">
+            <div class="panel-header">
+                <h2>Moderare Recenzii Clienți</h2>
+                <p>Monitorizează feedback-ul și elimină conținutul neadecvat.</p>
+            </div>
+
+            <div style="background:white; padding:20px; border-radius:15px; box-shadow:0 10px 30px rgba(0,0,0,0.05);">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Produs (SKU)</th>
+                            <th>Nume User</th>
+                            <th>Notă</th>
+                            <th>Comentariu</th>
+                            <th>Acțiuni</th>
+                        </tr>
+                    </thead>
+                    <tbody id="reviewsTableBody">
+                        <!-- Loaded via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 10. SETTINGS & MAINTENANCE PANEL -->
+        <div id="settingsPanel" class="panel">
+            <h1>Setări Globale Site</h1>
+            <p>Gestionează modul de mentenanță și alte setări fundamentale.</p>
+
+            <div
+                style="background:#fff; padding:30px; border-radius:20px; border:1px solid #e2e8f0; margin-top:20px; box-shadow:0 10px 30px rgba(0,0,0,0.02);">
+                <h3><i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b;"></i> Mod Avertisment /
+                    Mentenanță</h3>
+                <p style="color:#64748b; font-size:14px; margin-bottom:25px;">Acest overlay negru va apărea peste tot
+                    site-ul pentru a avertiza utilizatorii.</p>
+
+                <div class="form-group">
+                    <label style="display:flex; align-items:center; gap:12px; cursor:pointer; font-size:16px;">
+                        <input type="checkbox" id="maintenanceEnabled" style="width:24px; height:24px;">
+                        <b>Activează Overlay-ul de Avertisment</b>
+                    </label>
+                </div>
+
+                <div class="form-group" style="margin-top:25px;">
+                    <label>Mesaj Avertisment (Text personalizat)</label>
+                    <textarea id="maintenanceMessage" rows="5"
+                        placeholder="Introduceți textul care va apărea în modul de mentenanță..."
+                        style="width:100%; padding:15px; border-radius:12px; border:1px solid #e2e8f0; font-family:inherit; font-size:14px; line-height:1.6;"></textarea>
+                </div>
+
+                <button class="add-btn" onclick="saveMaintenanceSettings()"
+                    style="background: #1e293b; color: #fff; padding: 15px 30px; margin-top: 10px; width: auto;">
+                    <i class="fa-solid fa-floppy-disk"></i> Salvează Setările
+                </button>
+                <p id="settingsStatus" style="margin-top:15px; font-weight:600; font-size:14px; display:none;"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="utils.js"></script>
+    <script src="admin.js"></script>
+
+</body>
+
+</html>
