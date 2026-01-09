@@ -564,112 +564,166 @@ hr {
     cursor: pointer;
 }
 
-/* MOBILE RESPONSIVENESS (480px) */
+/* MOBILE RESPONSIVENESS (480px) - OPTIMIZED FOR TOUCH */
 @media (max-width: 480px) {
+
+    /* Base font size for better readability */
+    body {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
     .site-header {
-        padding: 10px 15px;
+        padding: 12px 15px;
     }
 
     .brand .logo {
-        height: 35px;
+        height: 40px;
+        width: auto;
     }
 
     .site-name {
-        font-size: 16px;
+        font-size: 17px;
+        font-weight: 700;
     }
 
+    /* NAVBAR - Touch-optimized */
     .navbar {
-        gap: 5px;
-        padding: 10px 2%;
+        gap: 8px;
+        padding: 12px 3%;
         justify-content: space-around;
         bottom: 0;
         border-radius: 0;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.08);
+        height: 60px;
     }
 
     .navbar a {
-        font-size: 16px;
-        padding: 8px;
+        font-size: 22px;
+        padding: 10px;
         flex: 1;
         text-align: center;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        transition: all 0.2s;
+    }
+
+    .navbar a:active {
+        background: rgba(0, 210, 255, 0.1);
+        transform: scale(0.95);
+    }
+
+    .navbar a span {
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 2px;
     }
 
 
 
-
+    /* SEARCH - Full width, larger tap area */
     .search-box {
-        margin: 15px 10px;
-        border-radius: 10px;
-        /* Moale, nu pastilă pe mobil */
+        margin: 15px auto;
+        max-width: 95%;
     }
 
     .search-box input {
-        padding: 10px 15px;
-        font-size: 14px;
+        font-size: 16px;
+        padding: 14px 16px;
+        height: 50px;
     }
 
+    .search-btn {
+        padding: 14px 20px;
+        min-width: 50px;
+        min-height: 50px;
+    }
+
+    /* FILTERS - Touch-friendly dropdowns */
     .filters-bar {
         justify-content: center;
-        gap: 8px;
-        padding: 0 10px;
+        gap: 10px;
+        padding: 0 12px;
+        margin: 15px 0;
     }
 
     .filter-group {
         flex: 1;
-        min-width: 120px;
+        min-width: 140px;
+    }
+
+    .filter-group label {
+        font-size: 13px;
+        font-weight: 700;
     }
 
     .filter-group select {
         width: 100%;
-        font-size: 12px;
+        font-size: 14px;
+        padding: 12px;
+        height: 48px;
+        border-radius: 10px;
     }
 
 
+    /* PRODUCTS - Touch-friendly cards */
     .products {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 14px;
         padding: 0 12px;
     }
 
     .product-card {
-        padding: 10px;
+        padding: 12px;
         border-radius: 16px;
     }
 
     .product-card img {
-        height: 120px;
-        border-radius: 12px;
+        height: 140px;
+        border-radius: 14px;
     }
 
     .product-card h3 {
-        font-size: 13px;
-        margin-top: 8px;
+        font-size: 14px;
+        margin-top: 10px;
+        line-height: 1.3;
+        font-weight: 700;
     }
 
     .product-card .price {
-        font-size: 15px;
+        font-size: 17px;
+        font-weight: 800;
+        margin: 8px 0;
     }
 
+    /* BUTTONS - Minimum 44x44px touch target */
     .add-cart {
-        padding: 10px;
-        font-size: 11px;
-        border-radius: 8px;
+        padding: 12px;
+        font-size: 13px;
+        border-radius: 10px;
+        min-height: 44px;
+        font-weight: 700;
     }
 
     .badge {
-        padding: 2px 6px;
-        font-size: 8px;
-        top: 6px;
-        left: 6px;
+        padding: 4px 8px;
+        font-size: 9px;
+        font-weight: 700;
+        top: 8px;
+        left: 8px;
     }
 
     .fav-btn,
     .remove-fav {
-        width: 28px;
-        height: 28px;
-        font-size: 12px;
-        top: 6px;
-        right: 6px;
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        top: 8px;
+        right: 8px;
     }
 
 
