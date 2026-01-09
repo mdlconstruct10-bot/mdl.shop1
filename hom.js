@@ -56,13 +56,17 @@ document.addEventListener("DOMContentLoaded", function () {
         p.sku = "MDL-GEN-" + idx;
         changed = true;
       }
-      // Migration: strip leading slash and handle renamed files for GitHub Pages
+      // Migration: strip leading slash and handle renamed files (no spaces) for GitHub Pages
       if (p.image && p.image.startsWith("/")) {
         p.image = p.image.substring(1);
         changed = true;
       }
-      if (p.image === "imagine 14.jpg") {
-        p.image = "imagine14.jpg";
+      if (p.image && p.image.includes(" ")) {
+        p.image = p.image.replace(/\s+/g, "");
+        changed = true;
+      }
+      if (p.image === "Photoroom_20251229_000535.PNG") {
+        p.image = "logo.png";
         changed = true;
       }
     });
