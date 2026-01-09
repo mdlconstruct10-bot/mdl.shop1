@@ -134,8 +134,8 @@ function loadAbandonedCarts() {
 
 // 3. PRODUCTS LOGIC & DRAG DROP
 const defaultProducts = [
-    { name: "Cameră Wireless", price: 199, category: "telefon", image: "imagine 14.jpg", badge: "NOU", description: "Cameră HD...", sku: "MDL-1001", stock: 15, colors: "Alb,Negru" },
-    { name: "Cameră Exterior", price: 249, category: "telefon", image: "imagine 14.jpg", badge: "-50%", description: "Rezistentă la apă...", sku: "MDL-1002", stock: 3, colors: "Alb" }
+    { name: "Cameră Wireless", price: 199, category: "telefon", image: "imagine14.jpg", badge: "NOU", description: "Cameră HD...", sku: "MDL-1001", stock: 15, colors: "Alb,Negru" },
+    { name: "Cameră Exterior", price: 249, category: "telefon", image: "imagine14.jpg", badge: "-50%", description: "Rezistentă la apă...", sku: "MDL-1002", stock: 3, colors: "Alb" }
 ];
 
 function getProducts() {
@@ -246,7 +246,7 @@ function addProduct() {
         stock: Number(stock) || 0,
         sku: generateSKU(),
         category: cat,
-        image: img || "imagine 14.jpg",
+        image: img || "imagine14.jpg",
         badge: badge,
         description: desc,
         colors: colors,

@@ -56,9 +56,13 @@ document.addEventListener("DOMContentLoaded", function () {
         p.sku = "MDL-GEN-" + idx;
         changed = true;
       }
-      // Migration: strip leading slash from images for GitHub Pages
+      // Migration: strip leading slash and handle renamed files for GitHub Pages
       if (p.image && p.image.startsWith("/")) {
         p.image = p.image.substring(1);
+        changed = true;
+      }
+      if (p.image === "imagine 14.jpg") {
+        p.image = "imagine14.jpg";
         changed = true;
       }
     });
@@ -68,11 +72,11 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
 
     productsData = [
-      { sku: "MDL-CAM-01", name: "Cameră Wireless", price: 199, category: "telefon", image: "imagine 14.jpg", badge: "SUPER PRET" },
-      { sku: "MDL-CAM-02", name: "Cameră Exterior", price: 249, category: "telefon", image: "imagine 14.jpg", badge: "REDUCERE 50%" },
-      { sku: "MDL-SMT-01", name: "Ceas Smart", price: 399, category: "telefon", image: "imagine 14.jpg", badge: "OFERTA ZILEI" },
-      { sku: "MDL-DRY-01", name: "Uscător Rufe", price: 899, category: "electrocasnice", image: "imagine 14.jpg", badge: "NOU" },
-      { sku: "MDL-WSH-01", name: "Mașină de spălat", price: 1599, category: "electrocasnice", image: "imagine 14.jpg", badge: "SUPER PRET" }
+      { sku: "MDL-CAM-01", name: "Cameră Wireless", price: 199, category: "telefon", image: "imagine14.jpg", badge: "SUPER PRET" },
+      { sku: "MDL-CAM-02", name: "Cameră Exterior", price: 249, category: "telefon", image: "imagine14.jpg", badge: "REDUCERE 50%" },
+      { sku: "MDL-SMT-01", name: "Ceas Smart", price: 399, category: "telefon", image: "imagine14.jpg", badge: "OFERTA ZILEI" },
+      { sku: "MDL-DRY-01", name: "Uscător Rufe", price: 899, category: "electrocasnice", image: "imagine14.jpg", badge: "NOU" },
+      { sku: "MDL-WSH-01", name: "Mașină de spălat", price: 1599, category: "electrocasnice", image: "imagine14.jpg", badge: "SUPER PRET" }
     ];
     localStorage.setItem("mdlProducts", JSON.stringify(productsData));
 
