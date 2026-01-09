@@ -22,8 +22,8 @@
 @media (max-width: 480px) {
     .checkout-container {
         margin: 10px;
-        padding: 15px;
-        border-radius: 12px;
+        padding: 16px;
+        border-radius: 16px;
     }
 
     .checkout-grid {
@@ -31,35 +31,59 @@
     }
 
     .order-summary {
-        padding: 20px;
-        border-radius: 16px;
+        padding: 24px;
+        border-radius: 18px;
         margin-top: 20px;
     }
 
     .order-summary h3 {
-        font-size: 18px;
+        font-size: 19px;
+        font-weight: 800;
     }
 
     .summary-item {
-        font-size: 14px;
+        font-size: 15px;
+        font-weight: 600;
     }
 
     .summary-item.total {
-        font-size: 18px;
+        font-size: 19px;
+        font-weight: 800;
     }
 
     .summary-item.total span {
-        font-size: 20px;
+        font-size: 22px;
     }
 
     .place-order-btn {
-        font-size: 16px;
-        padding: 16px;
+        font-size: 17px;
+        padding: 18px;
         border-radius: 14px;
+        min-height: 56px;
     }
 
     h1 {
-        font-size: 22px;
+        font-size: 24px;
+        font-weight: 800;
+    }
+
+    /* Payment cards - single column on very small screens */
+    .payment-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .card-content {
+        padding: 16px;
+    }
+
+    .card-content i {
+        font-size: 26px;
+    }
+
+    .card-content span {
+        font-size: 15px;
+        font-weight: 700;
     }
 }
 
