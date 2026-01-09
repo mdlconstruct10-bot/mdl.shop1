@@ -56,6 +56,11 @@ document.addEventListener("DOMContentLoaded", function () {
         p.sku = "MDL-GEN-" + idx;
         changed = true;
       }
+      // Migration: strip leading slash from images for GitHub Pages
+      if (p.image && p.image.startsWith("/")) {
+        p.image = p.image.substring(1);
+        changed = true;
+      }
     });
     if (changed) {
       localStorage.setItem("mdlProducts", JSON.stringify(productsData));
