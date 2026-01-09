@@ -1,0 +1,407 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* ================== TOP ================== */
+.com {
+    text-align: center;
+    margin-top: -14px;
+    font-size: 15px;
+}
+/* ================== on test ================== */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+}
+
+/* GRID – 3 pe rând */
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 100px;
+  justify-items: center;
+  margin-top: -40px;
+}
+.search-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  right: 2px;
+  font-size: 18px;
+  top: 8px;
+}
+.fotter {
+  display: flex;                  /* FLEX = rând orizontal */
+  flex-direction: row;            /* rând, default */
+  justify-content: space-between; /* spațiu egal între box-uri */
+  align-items: center;            /* vertical centrat */
+  width: 100%;
+  padding: 20px;
+  background-color: #000;
+  flex-wrap: nowrap;
+  gap: 90px;  
+ 
+              /* NU se împachetează pe vertical */
+}
+.box-1, .box-2, .box-3, .box-4 {
+  width: 150px;
+  height: 150px;
+  background-color: black;  /* sau culorile tale */
+  color: white;
+  display: flex;
+  flex-direction: column;      /* vertical – titlu sus, paragraf jos */
+  justify-content: space-between; /* titlu sus, paragraf jos */
+  padding: 10px;               /* spațiu interior */
+  border-radius: 8px;
+}
+
+.box-1 { background: rgb(7, 9, 120); }
+.box-2 { background: rgb(164, 79, 79); }
+.box-3 { background: rgb(162, 203, 13); }
+.box-4 { background: rgb(18, 185, 12); }
+
+
+
+
+
+
+
+/* CARD */
+.product-card {
+  position: relative;
+  width: 260px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 12px;
+  text-align: center;
+
+  text-decoration: none;   /* 🔥 scoate linia */
+  color: black;            /* 🔥 culoare text */
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.268);
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 30px rgb(0, 0, 0);
+}
+
+/* IMAGINE */
+.product-card img {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* TITLU */
+.product-card h2 {
+  margin: 10px 0 5px;
+  text-decoration: none; /* 🔥 sigur nu apare linie */
+}
+
+/* PRET */
+.price {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* BUTON COS */
+.add-cart {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: black;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* BADGE */
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* INIMIOARĂ */
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  background: white;
+  border: none;
+  border-radius: 50%;
+  padding: 8px;
+
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.fav-btn i {
+  color: #444;
+}
+
+/* ACTIV */
+.fav-btn.active i {
+  color: red;
+  font-weight: 900;
+
+}
+
+
+/* ================== off test ================== */
+
+.linie {
+    width: 100%;
+    height: 2px;
+}
+
+.linie hr {
+    margin-top: -20px;
+    height: 2px;
+}
+
+/* ================== HEADER ================== */
+.site-header {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.logo {
+    width: 40px;
+    height: auto;
+}
+
+.site-name {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+/* ================== NAVBAR ================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+    padding: 0 150px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+    font-size: 15px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 35px rgb(0, 0, 0);
+    border-radius: 20px;
+}
+
+/* ================== SEARCH ================== */
+.search-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 750px;
+    margin: 0 auto;
+}
+.search-btn {
+    position: absolute;
+    right: 10px;
+    font-size: 15px;
+    color: #000000;
+    text-align: center;
+}
+.search-box ::placeholder{
+    color: #000000;
+    font-size: 14px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 35px 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #000;
+}
+.search-box:hover input {
+    box-shadow: 0 6px 35px rgb(0, 0, 0);
+
+}
+
+/* ================== PRODUSE ================== */
+.tot-pro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin: 100px auto 0;
+    padding: 0 150px;
+    justify-items: center;
+}
+.tot-pro img {
+    display: block;
+    margin: 0 auto;
+}
+.tot-pro h2 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+.tot-pro .pret {
+    font-size: 16px;
+    color: #333;
+}
+
+
+
+
+
+.produs-card,.produs-2,
+.produs-3,
+.produs-4,
+.produs-5,
+.produs-6 {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid #000000;
+    width: 100%;
+    max-width: 300px;
+    transition: 0.3s;
+}
+
+.produs-card img,
+.produs-2 img,
+.produs-3 img,
+.produs-4 img,
+.produs-5 img,
+.produs-6 img {
+    width: 180px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.produs-card:hover,
+.produs-2:hover,
+.produs-3:hover,
+.produs-4:hover,
+.produs-5:hover,
+.produs-6:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgb(0, 0, 0);
+}
+
+/* ================== MEDIA 1440 ================== */
+@media (max-width: 1440px) {
+    .navbar {
+        padding: 0 100px;
+    }
+
+    .tot-pro {
+        padding: 0 100px;
+        gap: 60px;
+    }
+}
+
+/* ================== MEDIA 1040 ================== */
+@media (max-width: 1040px) {
+    .tot-pro {
+        padding: 0 60px;
+        gap: 20px;
+    }
+}
+
+/* ================== MEDIA 768 ================== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 40px;
+    }
+
+    .tot-pro {
+        padding: 0 30px;
+        gap: 20px;
+    }
+
+    .produs-card img,
+    .produs-2 img,
+    .produs-3 img,
+    .produs-4 img,
+    .produs-5 img,
+    .produs-6 img {
+        width: 140px;
+    }
+}
+
+/* ================== MEDIA 480 (MOBIL) ================== */
+@media (max-width: 480px) {
+
+    .com {
+        font-size: 14px;
+    }
+
+    .navbar {
+        justify-content: center;
+        gap: 60px;
+        padding: 0;
+        margin-bottom: 30px;
+    }
+
+    .products {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;              /* 🔥 SPAȚIU CORECT */
+        padding: 0 15px;
+        margin-top: 40px;
+        
+    }
+.products a{
+    width: 90%;
+}
+.search-box{
+    width: 400px;
+}
+    
+}
+
+/* ================== MEDIA 360 ================== */
+@media (max-width: 360px) {
+    .produs-card,
+    .produs-2,
+    .produs-3,
+    .produs-4,
+    .produs-5,
+    .produs-6 {
+        max-width: 260px;
+    }
+}
+@media (max-width: 1920px) {
+    .tot-pro
+    {
+        gap: 80px;
+    }
+}   
