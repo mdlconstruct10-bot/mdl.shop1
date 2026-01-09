@@ -30,10 +30,32 @@
         gap: 25px;
     }
 
+    .order-summary {
+        padding: 20px;
+        border-radius: 16px;
+        margin-top: 20px;
+    }
+
+    .order-summary h3 {
+        font-size: 18px;
+    }
+
+    .summary-item {
+        font-size: 14px;
+    }
+
+    .summary-item.total {
+        font-size: 18px;
+    }
+
+    .summary-item.total span {
+        font-size: 20px;
+    }
+
     .place-order-btn {
         font-size: 16px;
-        padding: 15px;
-        border-radius: 12px;
+        padding: 16px;
+        border-radius: 14px;
     }
 
     h1 {
@@ -61,34 +83,92 @@
     border-radius: 8px;
 }
 
+/* PREMIUM DARK ORDER SUMMARY */
 .order-summary {
-    background: #f9f9f9;
-    padding: 15px;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+    color: #fff;
+}
+
+.order-summary h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.order-summary h3 i {
+    color: #00d2ff;
+    font-size: 22px;
 }
 
 .summary-item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 5px;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
+.summary-item:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.summary-item.total {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    padding-top: 15px;
+    margin-top: 10px;
+    border-top: 2px solid rgba(0, 210, 255, 0.3);
+    border-bottom: none;
+}
+
+.summary-item.total span {
+    color: #00d2ff;
+    font-size: 24px;
+}
+
+/* PREMIUM PLACE ORDER BUTTON */
 .place-order-btn {
     width: 100%;
-    padding: 15px;
-    background: black;
-    color: white;
+    padding: 18px;
+    background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+    color: #fff;
     border: none;
-    border-radius: 10px;
+    border-radius: 16px;
     font-size: 18px;
+    font-weight: 700;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 25px;
+    box-shadow: 0 10px 30px rgba(0, 210, 255, 0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 .place-order-btn:hover {
-    background: #333;
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 210, 255, 0.4);
+    background: linear-gradient(135deg, #3a7bd5 0%, #00d2ff 100%);
+}
+
+.place-order-btn:active {
+    transform: translateY(-1px);
 }
 
 /* Client Type Tabs */
