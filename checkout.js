@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (cart.length === 0) {
         showToast("Coșul tău este gol!", "error");
 
-        window.location.href = "hom.html";
+        window.location.href = "index.html";
         return;
     }
 

@@ -33,7 +33,7 @@ document.querySelector("#loginBox form").addEventListener("submit", function (e)
 
   // Redirecționare către pagina principală
   // Redirecționare către pagina principală sau reîncărcare pt dashboard
-  // window.location.href = "hom.html"; 
+  // window.location.href = "index.html"; 
   location.reload();
 });
 

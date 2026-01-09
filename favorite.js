@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         favs.forEach((p, index) => {
-            // Creăm cardul fix ca în hom.html
+            // Creăm cardul fix ca în index.html
             const div = document.createElement("div");
             div.className = "product-card"; // Clasa din CSS-ul principal
             div.style.position = "relative";
